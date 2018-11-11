@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> First Name</th>
+        <th> Last Name</th>
+        <th> Pather Name</th>
+        <th> diagnosis_id</th>
+        <th> ward_id</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${peopleList.empty}">
+        <td colspan="2"> No peopleList Available</td>
+    </tr>
+    <tr th:each="people : ${peopleList}">
+        <td><a th:href="@{'/people?id=' + ${people.id}}"><span th:text="${people.firstName}">First Name </span></a></td>
+        <td><span th:text="${people.lastName}"> Last Name </span></td>
+        <td><span th:text="${people.patherName}"> Pather Name </span></td>
+        <td><span th:text="${people.diagnosisId}"> Diagnosis id </span></td>
+        <td><span th:text="${people.wardId}"> Ward id </span></td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="#" th:action="@{/peoples/addPeople}" th:object="${people}" method="post">
+    <br> Id <br>
+    <input type="text" name="id">
+    <br> First Name <br>
+    <input type="text" name="firstName">
+    <br> Last Name <br>
+    <input type="text" name="lastName">
+    <br> Pather Name <br>
+    <input type="text" name="patherName">
+    <br> Diagnosis Id <br>
+    <input type="text" name="diagnosisId">
+    <br> Ward Id <br>
+    <input type="text" name="wardId">
+
+    <button type="submit" name="action" value="add">Add</button>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Diagnosis information</h1>
+<h2 th:text="${diagnosis.name}"></h2>
+
+<form action="#" th:action="@{/diagnosis/editDiagnosis}" th:object="${diagnosis}" method="post">
+    <input name="id" type="hidden" th:value="*{id}">
+    <br> First Name <br>
+    <input type="text" name="name" th:field="*{name}">
+
+    <br>
+    <button type="submit" name="action" value="edit">Save</button>
+    <br>
+    <button type="submit" name="action" value="delete">Delete</button>
+</form>
+</body>
+</html>

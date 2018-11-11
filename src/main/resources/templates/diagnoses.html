@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Name </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${diagnosisList.empty}">
+        <td colspan="2"> No diagnosisList Available</td>
+    </tr>
+    <tr th:each="diagnosis : ${diagnosisList}">
+        <td><a th:href="@{'/diagnosis?id=' + ${diagnosis.id}}"><span th:text="${diagnosis.name}">Name</span></a></td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="#" th:action="@{/diagnoses/addDiagnosis}" th:object="${diagnosis}" method="post">
+    <br> Id <br>
+    <input type="text" name="id">
+    <br> Name <br>
+    <input type="text" name="name">
+
+    <button type="submit" name="action" value="add">Add</button>
+</form>
+
+
+</body>
+</html>

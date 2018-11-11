@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Name </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${wardList.empty}">
+        <td colspan="2"> No diagnosisList Available</td>
+    </tr>
+    <tr th:each="ward : ${wardList}">
+        <td><a th:href="@{'/ward?id=' + ${ward.id}}"><span th:text="${ward.name}">Name</span></a></td>
+        <td><span th:text="${ward.maxCount}"> Max count </span></td>
+        <td><span th:text="${ward.diagnosisId}"> Diagnosis id </span></td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="#" th:action="@{/wards/addWard}" th:object="${ward}" method="post">
+    <br> Id <br>
+    <input type="text" name="id">
+    <br> Name <br>
+    <input type="text" name="name">
+    <br> Max count <br>
+    <input type="text" name="maxCount">
+    <br> Diagnosis id <br>
+    <input type="text" name="diagnosisId">
+
+    <button type="submit" name="action" value="add">Add</button>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Patient card</h1>
+<h2 th:text="${people.firstName + ' ' + people.lastName}"></h2>
+
+<form action="#" th:action="@{/people/editPeople}" th:object="${people}" method="post">
+    <input name="id" type="hidden" th:value="*{id}">
+    <br> First Name <br>
+    <input type="text" name="firstName" th:field="*{firstName}">
+    <br> Last Name <br>
+    <input type="text" name="lastName" th:value="*{lastName}">
+    <br> Pather Name <br>
+    <input type="text" name="patherName" th:value="*{patherName}">
+    <br> Diagnosis Id <br>
+    <input type="text" name="diagnosisId" th:value="*{diagnosisId}">
+    <br> Ward Id <br>
+    <input type="text" name="wardId" th:value="*{wardId}">
+
+
+
+    <br>
+    <button type="submit" name="action" value="edit">Save</button>
+    <br>
+    <button type="submit" name="action" value="delete">Delete</button>
+</form>
+</body>
+</html>
